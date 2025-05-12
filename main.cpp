@@ -3,11 +3,28 @@
 
 int main (){
     LinkedList<std::string> list;
-    
-    list.insert("Hello");
-    list.insert("World");
-    list.insert("!");
+
+    list.insertToEnd("Hello");
+    list.insertToEnd("World");
+    list.insertToEnd("!");
+
+    list.insertToN(1, "Beautiful");
+    list.insertToN(1, "C++");
 
     list.display();
-    return 0;    
+    std::cout << "Size of the list: " << list.size() << std::endl;
+
+    list.deleteN(4);
+    list.display();
+    std::cout << "Size of the list: " << list.size() << std::endl;
+
+    list.deleteEnd();
+    list.display();
+    std::cout << "Size of the list: " << list.size() << std::endl;
+
+    list.deleteList();
+    list.display();
+    std::cout << "Size of the list: " << list.size() << std::endl;
+
+    return 0;
 }
