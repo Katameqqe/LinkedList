@@ -1,7 +1,8 @@
 #include "LL.h"
 #include <string>
 
-int main (){
+int main ()
+{
     LinkedList<std::string> list;
 
     list.insertToEnd("Hello");
