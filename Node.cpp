@@ -1,29 +1,32 @@
 #include <iostream>
+#include <string>
+template <typename T>
 class Node{
     public:
-        int data;
-        Node* next;
+        T data;
+        Node<T>* next;
 
-        Node(int data){
+        Node(T data){
             this->data = data;
             this->next = nullptr;
         }
 };
 
+template <typename T>
 class LinkedList{
     private:
-        Node* head;
+        Node<T>* head;
     public:
         LinkedList(){
             head = nullptr;
         }
 
-        void insert(int value){
-            Node* newNode = new Node(value);
+        void insert(T value){
+            Node<T>* newNode = new Node<T>(value);
             if (head == nullptr){
                 head = newNode;
             } else {
-                Node* temp = head;
+                Node<T>* temp = head;
                 while(temp->next != nullptr){
                     temp = temp->next;
                 }
@@ -32,7 +35,7 @@ class LinkedList{
         }
 
         void display(){
-            Node* temp = head;
+            Node<T>* temp = head;
             while (temp != nullptr) {
                 std::cout << temp->data << " -> ";
                 temp = temp->next;
@@ -41,9 +44,9 @@ class LinkedList{
         }
 
         ~LinkedList() {
-            Node* current = head;
+            Node<T>* current = head;
             while (current != nullptr) {
-                Node* next = current->next;
+                Node<T>* next = current->next;
                 delete current;
                 current = next;
             }
@@ -51,10 +54,10 @@ class LinkedList{
 };
 
 int main(){
-    LinkedList list;
-    list.insert(10);
-    list.insert(20);
-    list.insert(30);
+    LinkedList<std::string> list;
+    list.insert("Hello");
+    list.insert("Hi");
+    list.insert("Bye");
 
     list.display();
 
