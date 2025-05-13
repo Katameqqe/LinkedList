@@ -22,8 +22,15 @@ private:
 public:
     LinkedList();
     int size();
-    void insertToN(int n, T value);
-    void insertToStart(T value);
+    void insertToN(int n, T value)
+    {
+
+    }
+
+    void insertToStart(T value)
+    {
+
+    }
     void insertToEnd(T value);
     void deleteN(int n);
     void deleteEnd();
@@ -31,4 +38,5 @@ public:
     void display();
     ~LinkedList();
 };
+
 #endif
