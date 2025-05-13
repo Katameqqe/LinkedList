@@ -7,9 +7,25 @@ SRC_DIR = src
 OBJ_DIR = obj
 BIN_DIR = bin
 
-main:
-	@mkdir -p $(OBJ_DIR) $(BIN_DIR)
-	$(CXX) $(CXXFLAGS) -c ./$(SRC_DIR)/main.cpp -o ./$(OBJ_DIR)/main.o
-	$(CXX) $(CXXFLAGS) -c ./$(SRC_DIR)/LinkedList.cpp -o ./$(OBJ_DIR)/LinledList.o
-	$(CXX) $(CXXFLAGS) -o ./$(BIN_DIR)/app ./$(OBJ_DIR)/main.o ./$(OBJ_DIR)/LinledList.o
-	./$(BIN_DIR)/app
+TARGET = $(BIN_DIR)/app
+
+IGNORE = LL_sharedPtr.cpp
+
+SRCS = $(filter-out $(SRC_DIR)/$(IGNORE), $(wildcard $(SRC_DIR)/*.cpp))
+OBJS = $(patsubst $(SRC_DIR)/%.cpp, $(OBJ_DIR)/%.o, $(SRCS))
+
+all: $(TARGET)
+	@$(TARGET)
+
+$(TARGET): $(OBJS)
+	@mkdir -p $(BIN_DIR)
+	$(CXX) $(CXXFLAGS) -o $@ $^
+
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp
+	@mkdir -p $(OBJ_DIR)
+	$(CXX) $(CXXFLAGS) -c $< -o $@
+
+clean:
+	rm -rf $(OBJ_DIR) $(BIN_DIR)
+
+.PHONY: all clean

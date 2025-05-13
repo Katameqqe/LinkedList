@@ -20,13 +20,13 @@ void Node<T>::setData(T data)
 }
 
 template <typename T>
-Node<T>* Node<T>::getNext()
+Node<T> *Node<T>::getNext()
 {
     return this->next;
 }
 
 template <typename T>
-void Node<T>::setNext(Node<T>* next)
+void Node<T>::setNext(Node<T> *next)
 {
     this->next = next;
 }
@@ -48,7 +48,7 @@ template <typename T>
 int LinkedList<T>::size()
 {
     int count = 0;
-    Node<T>* temp = head;
+    Node<T> *temp = head;
     while (temp != nullptr)
     {
         count++;
@@ -60,7 +60,7 @@ int LinkedList<T>::size()
 template <typename T>
 void LinkedList<T>::insertToN(int n, T value)
 {
-    Node<T>* newNode = new Node<T>(value);
+    Node<T> *newNode = new Node<T>(value);
     if (n == 0)
     {
         newNode->setNext(head);
@@ -68,7 +68,7 @@ void LinkedList<T>::insertToN(int n, T value)
     }
     else
     {
-        Node<T>* temp = head;
+        Node<T> *temp = head;
         for (int i = 0; i < n - 1 && temp != nullptr; i++)
         {
             temp = temp->getNext();
@@ -94,14 +94,14 @@ void LinkedList<T>::insertToStart(T value)
 template <typename T>
 void LinkedList<T>::insertToEnd(T value)
 {
-    Node<T>* newNode = new Node<T>(value);
+    Node<T> *newNode = new Node<T>(value);
     if (head == nullptr)
     {
         head = newNode;
     }
     else
     {
-        Node<T>* temp = head;
+        Node<T> *temp = head;
         while(temp->getNext() != nullptr)
         {
             temp = temp->getNext();
@@ -117,7 +117,7 @@ void LinkedList<T>::deleteN(int n)
     {
         return;
     }
-    Node<T>* temp = head;
+    Node<T> *temp = head;
     if (n == 0)
     {
         head = temp->getNext();
@@ -132,7 +132,7 @@ void LinkedList<T>::deleteN(int n)
     {
         return;
     }
-    Node<T>* nextNode = temp->getNext()->getNext();
+    Node<T> *nextNode = temp->getNext()->getNext();
     delete temp->getNext();
     temp->setNext(nextNode);
 }
@@ -150,7 +150,7 @@ void LinkedList<T>::deleteEnd()
         head = nullptr;
         return;
     }
-    Node<T>* temp = head;
+    Node<T> *temp = head;
     while (temp->getNext()->getNext() != nullptr)
     {
         temp = temp->getNext();
@@ -162,7 +162,7 @@ void LinkedList<T>::deleteEnd()
 template <typename T>
 void LinkedList<T>::deleteList()
 {
-    Node<T>* temp = head;
+    Node<T> *temp = head;
     while (temp != nullptr)
     {
         Node<T>* next = temp->getNext();
@@ -174,7 +174,7 @@ void LinkedList<T>::deleteList()
 
 template <typename T>
 void LinkedList<T>::display(){
-    Node<T>* temp = head;
+    Node<T> *temp = head;
     while (temp != nullptr)
     {
         std::cout << temp->getData() << " -> ";

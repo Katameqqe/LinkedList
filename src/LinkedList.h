@@ -11,12 +11,12 @@ public:
 
     T getData();
     void setData(T data);
-    Node<T>* getNext();
-    void setNext(Node<T>* next);
+    Node<T> *getNext();
+    void setNext(Node<T> *next);
 
 private:
     T data;
-    Node<T>* next;
+    Node<T> *next;
 };
 
 template <typename T>
@@ -35,7 +35,7 @@ public:
     ~LinkedList();
 
 private:
-    Node<T>* head;
+    Node<T> *head;
 
 };
 
