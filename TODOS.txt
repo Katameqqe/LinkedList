@@ -1,0 +1,48 @@
+// TODO: Add new lines between functions.
+// TODO: Write * next to variable name, instead of typename: TypeName *varname
+
+private: in the end
+
+Rename LL -> LinkedList
+
+Rename LinkedList -> LinkedList_RawPointer
+
+write LinkedList_SharedPointers
+
+
+
+// we alread have another 
+
+sharedPtr<Node> top;
+top->next = nullptr
+
+
+{
+
+    sharedPtr<Node> node = sharedPtr(new Node); // use_counter already == 1
+    // What happened here?
+    // 1. memory allocated
+    // 2. pointer to allocated memory was passed to sharedPtr variable
+
+    top->next = node; // node->use_counter++
+
+} //node->use_counter--
+
+if (node->use_counter == 0)
+{
+    delete node
+}
+
+
+.........
+
+top = nullptr; // this means calling destructor of shared_ptr
+
+// destructor shared_ptr calls destructor of Node
+
+
+// destructor shared_ptr just decrements use_counter (use_counter--)
+if (node->use_counter == 0)
+{
+    delete node
+}

@@ -1,0 +1,8 @@
+1. Coding style
+2. learn shared_ptr. Fix errors in sharedPtr implementation
+3. insertion sorting
+
+
+
+
+4. make implementation with class intstead of templates
