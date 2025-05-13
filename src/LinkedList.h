@@ -7,36 +7,36 @@ template <typename T>
 class Node
 {
 public:
+    Node(T data);
+
+    T getData();
+    void setData(T data);
+    Node<T>* getNext();
+    void setNext(Node<T>* next);
+
+private:
     T data;
     Node<T>* next;
-
-    Node(T data);
 };
 
 template <typename T>
 class LinkedList
 {
-private:
-    Node<T>* head;
-
 public:
     LinkedList();
     int size();
-    void insertToN(int n, T value)
-    {
-
-    }
-
-    void insertToStart(T value)
-    {
-
-    }
+    void insertToN(int n, T value);
+    void insertToStart(T value);
     void insertToEnd(T value);
     void deleteN(int n);
     void deleteEnd();
     void deleteList();
     void display();
     ~LinkedList();
+
+private:
+    Node<T>* head;
+
 };
 
 #endif

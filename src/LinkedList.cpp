@@ -1,11 +1,36 @@
-#include "LL.h"
+#include "LinkedList.h"
 
 template <typename T>
 Node<T>::Node(T data)
 {
     this->data = data;
     this->next = nullptr;
-};
+}
+
+template <typename T>
+T Node<T>::getData()
+{
+    return this->data;
+}
+
+template <typename T>
+void Node<T>::setData(T data)
+{
+    this->data = data;
+}
+
+template <typename T>
+Node<T>* Node<T>::getNext()
+{
+    return this->next;
+}
+
+template <typename T>
+void Node<T>::setNext(Node<T>* next)
+{
+    this->next = next;
+}
+
 
 template <typename T>
 LinkedList<T>::LinkedList()
@@ -27,30 +52,31 @@ int LinkedList<T>::size()
     while (temp != nullptr)
     {
         count++;
-        temp = temp->next;
+        temp = temp->getNext();
     }
     return count;
 }
+
 template <typename T>
 void LinkedList<T>::insertToN(int n, T value)
 {
     Node<T>* newNode = new Node<T>(value);
     if (n == 0)
     {
-        newNode->next = head;
+        newNode->setNext(head);
         head = newNode;
-    } 
+    }
     else
     {
         Node<T>* temp = head;
         for (int i = 0; i < n - 1 && temp != nullptr; i++)
         {
-            temp = temp->next;
+            temp = temp->getNext();
         }
         if (temp != nullptr)
         {
-            newNode->next = temp->next;
-            temp->next = newNode;
+            newNode->setNext(temp->getNext());
+            temp->setNext(newNode);
         }
         else
         {
@@ -76,77 +102,86 @@ void LinkedList<T>::insertToEnd(T value)
     else
     {
         Node<T>* temp = head;
-        while(temp->next != nullptr)
+        while(temp->getNext() != nullptr)
         {
-            temp = temp->next;
+            temp = temp->getNext();
         }
-        temp->next = newNode;
+        temp->setNext(newNode);
     }
 }
+
 template <typename T>
 void LinkedList<T>::deleteN(int n)
 {
-    if (head == nullptr) return;
+    if (head == nullptr)
+    {
+        return;
+    }
     Node<T>* temp = head;
     if (n == 0)
     {
-        head = temp->next;
+        head = temp->getNext();
         delete temp;
         return;
     }
     for (int i = 0; i < n - 1 && temp != nullptr; i++)
     {
-        temp = temp->next;
+        temp = temp->getNext();
     }
-    if (temp == nullptr || temp->next == nullptr) return;
-    Node<T>* nextNode = temp->next->next;
-    delete temp->next;
-    temp->next = nextNode;
+    if (temp == nullptr || temp->getNext() == nullptr)
+    {
+        return;
+    }
+    Node<T>* nextNode = temp->getNext()->getNext();
+    delete temp->getNext();
+    temp->setNext(nextNode);
 }
+
 template <typename T>
 void LinkedList<T>::deleteEnd()
 {
-    if (head == nullptr) return;
-    if (head->next == nullptr)
+    if (head == nullptr) 
+    {
+        return;
+    }
+    if (head->getNext() == nullptr)
     {
         delete head;
         head = nullptr;
         return;
     }
     Node<T>* temp = head;
-    while (temp->next->next != nullptr)
+    while (temp->getNext()->getNext() != nullptr)
     {
-        temp = temp->next;
+        temp = temp->getNext();
     }
-    delete temp->next;
-    temp->next = nullptr;
+    delete temp->getNext();
+    temp->setNext(nullptr);
 }
+
 template <typename T>
 void LinkedList<T>::deleteList()
 {
     Node<T>* temp = head;
     while (temp != nullptr)
     {
-        Node<T>* next = temp->next;
+        Node<T>* next = temp->getNext();
         delete temp;
         temp = next;
     }
     head = nullptr;
 }
+
 template <typename T>
 void LinkedList<T>::display(){
     Node<T>* temp = head;
     while (temp != nullptr)
     {
-        std::cout << temp->data << " -> ";
-        temp = temp->next;
+        std::cout << temp->getData() << " -> ";
+        temp = temp->getNext();
     }
     std::cout << "nullptr" << std::endl;
 }
 
-// /usr/bin/ld: ./obj/main.o: in function `main.cold':
-// main.cpp:(.text.unlikely+0xc): undefined reference to 
-// `LinkedList<std::__cxx11::basic_string<char, std::char_traits<char>,
-// std::allocator<char> > >::~LinkedList()'
-// why without this line, it doesn't link compiled file?
 template class LinkedList<std::string>;
+template class LinkedList<int>;
