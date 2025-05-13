@@ -20,10 +20,10 @@ private:
 };
 
 template <typename T>
-class LinkedList
+class LinkedList_RawPointer
 {
 public:
-    LinkedList();
+    LinkedList_RawPointer();
     int size();
     void insertToN(int n, T value);
     void insertToStart(T value);
@@ -32,7 +32,7 @@ public:
     void deleteEnd();
     void deleteList();
     void display();
-    ~LinkedList();
+    ~LinkedList_RawPointer();
 
 private:
     Node<T> *head;

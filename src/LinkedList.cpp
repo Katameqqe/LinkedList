@@ -33,19 +33,19 @@ void Node<T>::setNext(Node<T> *next)
 
 
 template <typename T>
-LinkedList<T>::LinkedList()
+LinkedList_RawPointer<T>::LinkedList_RawPointer()
 {
     head = nullptr;
 }
 
 template <typename T>
-LinkedList<T>::~LinkedList()
+LinkedList_RawPointer<T>::~LinkedList_RawPointer()
 {
     deleteList();
 }
 
 template <typename T>
-int LinkedList<T>::size()
+int LinkedList_RawPointer<T>::size()
 {
     int count = 0;
     Node<T> *temp = head;
@@ -58,7 +58,7 @@ int LinkedList<T>::size()
 }
 
 template <typename T>
-void LinkedList<T>::insertToN(int n, T value)
+void LinkedList_RawPointer<T>::insertToN(int n, T value)
 {
     Node<T> *newNode = new Node<T>(value);
     if (n == 0)
@@ -86,13 +86,13 @@ void LinkedList<T>::insertToN(int n, T value)
 }
 
 template <typename T>
-void LinkedList<T>::insertToStart(T value)
+void LinkedList_RawPointer<T>::insertToStart(T value)
 {
     insertToN(0,value);
 }
 
 template <typename T>
-void LinkedList<T>::insertToEnd(T value)
+void LinkedList_RawPointer<T>::insertToEnd(T value)
 {
     Node<T> *newNode = new Node<T>(value);
     if (head == nullptr)
@@ -111,7 +111,7 @@ void LinkedList<T>::insertToEnd(T value)
 }
 
 template <typename T>
-void LinkedList<T>::deleteN(int n)
+void LinkedList_RawPointer<T>::deleteN(int n)
 {
     if (head == nullptr)
     {
@@ -138,7 +138,7 @@ void LinkedList<T>::deleteN(int n)
 }
 
 template <typename T>
-void LinkedList<T>::deleteEnd()
+void LinkedList_RawPointer<T>::deleteEnd()
 {
     if (head == nullptr) 
     {
@@ -160,12 +160,12 @@ void LinkedList<T>::deleteEnd()
 }
 
 template <typename T>
-void LinkedList<T>::deleteList()
+void LinkedList_RawPointer<T>::deleteList()
 {
     Node<T> *temp = head;
     while (temp != nullptr)
     {
-        Node<T>* next = temp->getNext();
+        Node<T> *next = temp->getNext();
         delete temp;
         temp = next;
     }
@@ -173,7 +173,7 @@ void LinkedList<T>::deleteList()
 }
 
 template <typename T>
-void LinkedList<T>::display(){
+void LinkedList_RawPointer<T>::display(){
     Node<T> *temp = head;
     while (temp != nullptr)
     {
@@ -183,5 +183,5 @@ void LinkedList<T>::display(){
     std::cout << "nullptr" << std::endl;
 }
 
-template class LinkedList<std::string>;
-template class LinkedList<int>;
+template class LinkedList_RawPointer<std::string>;
+template class LinkedList_RawPointer<int>;

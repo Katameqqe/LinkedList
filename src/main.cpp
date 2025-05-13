@@ -3,7 +3,7 @@
 
 int main ()
 {
-    LinkedList<std::string> list;
+    LinkedList_RawPointer<std::string> list;
 
     list.insertToEnd("Hello");
     list.insertToEnd("World");
