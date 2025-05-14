@@ -32,6 +32,8 @@ public:
     void deleteEnd();
     void deleteList();
     void display();
+    void swapNodes(Node<T>* n1, Node<T>* n2);
+    Node<T>* getHead();
     ~LinkedList_RawPointer();
 
 private:

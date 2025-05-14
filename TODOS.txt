@@ -9,6 +9,8 @@ Rename LinkedList -> LinkedList_RawPointer
 
 write LinkedList_SharedPointers
 
+add xor in swaping data
+
 
 
 // we alread have another 

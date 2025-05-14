@@ -1,31 +1,21 @@
 #include "LinkedList.h"
+#include "Sorting.h"
 #include <string>
 
 int main ()
 {
-    LinkedList_RawPointer<std::string> list;
+    LinkedList_RawPointer<int> list;
 
-    list.insertToEnd("Hello");
-    list.insertToEnd("World");
-    list.insertToEnd("!");
+    list.insertToEnd(1);
+    list.insertToEnd(2);
+    list.insertToEnd(3);
 
-    list.insertToN(1, "Beautiful");
-    list.insertToN(1, "C++");
+    list.insertToN(1, 4);
+    list.insertToN(1, 5);
 
     list.display();
-    std::cout << "Size of the list: " << list.size() << std::endl;
-
-    list.deleteN(4);
+    Sorting::inserSort(list);
     list.display();
-    std::cout << "Size of the list: " << list.size() << std::endl;
-
-    list.deleteEnd();
-    list.display();
-    std::cout << "Size of the list: " << list.size() << std::endl;
-
-    list.deleteList();
-    list.display();
-    std::cout << "Size of the list: " << list.size() << std::endl;
 
     return 0;
 }
