@@ -1,11 +1,6 @@
-// TODO: Add new lines between functions.
-// TODO: Write * next to variable name, instead of typename: TypeName *varname
+Class name should be matched with filename and vice versa
 
-private: in the end
 
-Rename LL -> LinkedList
-
-Rename LinkedList -> LinkedList_RawPointer
 
 write LinkedList_SharedPointers
 

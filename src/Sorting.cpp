@@ -1,5 +1,10 @@
 #include "Sorting.h"
 
+// TODO: implement search function. Linear search.
+// void search()
+// {
+// }
+
 void Sorting::inserSort(LinkedList_RawPointer<int> list)
 {
     Node<int> *current = list.getHead();
@@ -10,6 +15,7 @@ void Sorting::inserSort(LinkedList_RawPointer<int> list)
     {
         nextNode = current->getNext();
         
+        // todo: call search function
 
         while (prevNode != nullptr && prevNode->getData() < current->getData())
         {

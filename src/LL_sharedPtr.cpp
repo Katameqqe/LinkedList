@@ -1,11 +1,17 @@
 #include "LL_sharedPtr.h"
 
 template <typename T>
-Node<T>::Node(T data)
+static PtrT Node<T>::create(T data)
 {
-    this->data = data;
-    this->next = nullptr;
-};
+    return std::shared_ptr<Node<T>>(new Node<T>(value));
+}
+
+template <typename T>
+Node<T>::Node(T data) :
+    data(data)
+    , next (nullptr)
+{
+}
 
 template <typename T>
 LinkedList<T>::LinkedList():
@@ -34,7 +40,7 @@ int LinkedList<T>::size()
 template <typename T>
 void LinkedList<T>::insertToN(int n, T value)
 {
-    std::shared_ptr<Node<T>> newNode(new Node<T>(value));
+    std::shared_ptr<Node<T>> newNode = Node<T>::create(value);
     if (n == 0)
     {
         newNode->next = head;
