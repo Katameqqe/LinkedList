@@ -17,5 +17,6 @@ int main ()
     Sorting::inserSort(list);
     list.display();
 
+    // BinarySorting::....
     return 0;
 }

@@ -182,22 +182,6 @@ void LinkedList_RawPointer<T>::display(){
     }
     std::cout << "nullptr" << std::endl;
 }
-template <typename T>
-void LinkedList_RawPointer<T>::swapNodes(Node<T>* n1, Node<T>* n2)
-{
-    T temp = n1->getData();
-    n1->setData(n2->getData());
-    n2->setData(temp);
-}
 
-template <typename T>
-Node<T>* LinkedList_RawPointer<T>::getHead()
-{
-    return head;
-}
-
-template class Node<int>;
-template class Node<std::string>;
-
-template class LinkedList_RawPointer<int>;
 template class LinkedList_RawPointer<std::string>;
+template class LinkedList_RawPointer<int>;

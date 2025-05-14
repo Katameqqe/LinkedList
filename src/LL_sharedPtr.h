@@ -7,10 +7,14 @@ template <typename T>
 class Node
 {
 public:
+    using PtrT = std::shared_ptr<Node<T>>;
+
+    static PtrT create(t data);
+
     // TODO; implement getters and setters for internal variables 
     // TODO: data should be private
     T data;
-    std::shared_ptr<Node<T>> next;
+    PtrT next;
 
     // TODO: constructor always first 
     Node(T data);
@@ -38,6 +42,6 @@ public:
     ~LinkedList();
 
 private:
-    std::shared_ptr<Node<T>> head;
+    PtrT head;
 };
 #endif
