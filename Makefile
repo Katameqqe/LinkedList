@@ -1,6 +1,6 @@
 # Compiler and flags
 CXX = g++
-CXXFLAGS = -Wall -Wextra -std=c++11 -O2
+CXXFLAGS = -Wall -Wextra -std=c++11 -O0 -g
 
 # Directories
 SRC_DIR = src
@@ -11,7 +11,8 @@ TARGET = $(BIN_DIR)/app
 
 IGNORE = LL_sharedPtr.cpp
 
-SRCS = $(filter-out $(SRC_DIR)/$(IGNORE), $(wildcard $(SRC_DIR)/*.cpp))
+SRCS = $(filter-out $(SRC_DIR)/LinkedList_withObject.cpp, $(filter-out $(SRC_DIR)/$(IGNORE), $(wildcard $(SRC_DIR)/*.cpp)))
+
 OBJS = $(patsubst $(SRC_DIR)/%.cpp, $(OBJ_DIR)/%.o, $(SRCS))
 
 all: $(TARGET)

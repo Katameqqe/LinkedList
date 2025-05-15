@@ -1,6 +1,7 @@
 #include "LinkedList.h"
 #include "Sorting.h"
 #include <string>
+#include <stdio.h>
 
 int main ()
 {
@@ -14,8 +15,8 @@ int main ()
     list.insertToN(1, 5);
 
     list.display();
-    Sorting::inserSort(list);
-    list.display();
+    LinkedList_RawPointer<int> rlist = Sorting::inserSort(list);
+    rlist.display();
 
     // BinarySorting::....
     return 0;

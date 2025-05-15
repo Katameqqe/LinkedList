@@ -6,10 +6,10 @@
 class Sorting
 {
 public:
-    static void inserSort(LinkedList_RawPointer<int> list);
-// todo:
-// private:
-// void search()
+    static LinkedList_RawPointer<int> inserSort(LinkedList_RawPointer<int> list);
+
+private:
+    static Node<int>* search(int value, Node<int>* list);
 
 };
 

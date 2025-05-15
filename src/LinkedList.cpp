@@ -14,9 +14,9 @@ T Node<T>::getData()
 }
 
 template <typename T>
-void Node<T>::setData(T data)
+void Node<T>::setData(T value)
 {
-    this->data = data;
+    data = value;
 }
 
 template <typename T>
@@ -38,6 +38,14 @@ LinkedList_RawPointer<T>::LinkedList_RawPointer()
     head = nullptr;
 }
 
+template <typename T>
+LinkedList_RawPointer<T>::LinkedList_RawPointer(const LinkedList_RawPointer<T>& other) : head(nullptr) {
+    Node<T>* temp = other.head;
+    while (temp != nullptr) {
+        insertToEnd(temp->getData());
+        temp = temp->getNext();
+    }
+}
 template <typename T>
 LinkedList_RawPointer<T>::~LinkedList_RawPointer()
 {
@@ -195,6 +203,27 @@ Node<T>* LinkedList_RawPointer<T>::getHead()
 {
     return head;
 }
+
+template <typename T>
+void LinkedList_RawPointer<T>::setHead(Node<T>* phead)
+{
+    head = phead;
+}
+
+
+template <typename T>
+const LinkedList_RawPointer<T> LinkedList_RawPointer<T>::copyList() {
+    LinkedList_RawPointer<T> newList;
+    Node<T>* temp = head;
+
+    while (temp != nullptr) {
+        newList.insertToEnd(temp->getData());
+        temp = temp->getNext();
+    }
+
+    return newList;
+}
+
 
 template class Node<int>;
 template class Node<std::string>;
