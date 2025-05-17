@@ -1,7 +1,8 @@
-#ifndef LL_H
-#define LL_H
+#ifndef LL_shared_H
+#define LL_shared_H
 
 #include <iostream>
+#include <memory>
 
 template <typename T>
 class Node
@@ -9,7 +10,7 @@ class Node
 public:
     using PtrT = std::shared_ptr<Node<T>>;
 
-    static PtrT create(t data);
+    static PtrT create(T data);
 
     // TODO; implement getters and setters for internal variables 
     // TODO: data should be private
@@ -27,10 +28,10 @@ public:
 };
 
 template <typename T>
-class LinkedList
+class LinkedList_sharedPointer
 {
 public:
-    LinkedList();
+    LinkedList_sharedPointer();
     int size();
     void insertToN(int n, T value);
     void insertToStart(T value);
@@ -39,7 +40,7 @@ public:
     void deleteEnd();
     void deleteList();
     void display();
-    ~LinkedList();
+    ~LinkedList_sharedPointer();
 
 private:
     PtrT head;

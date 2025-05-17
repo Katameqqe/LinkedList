@@ -1,7 +1,7 @@
-#include "LL_sharedPtr.h"
+#include "LinkedList_sharedPointer.h"
 
 template <typename T>
-static PtrT Node<T>::create(T data)
+Node<T>::PtrT Node<T>::create(T data)
 {
     return std::shared_ptr<Node<T>>(new Node<T>(value));
 }
@@ -14,19 +14,19 @@ Node<T>::Node(T data) :
 }
 
 template <typename T>
-LinkedList<T>::LinkedList():
+LinkedList_sharedPointer<T>::LinkedList_sharedPointer():
     head(nullptr)
 {
 }
 
 template <typename T>
-LinkedList<T>::~LinkedList()
+LinkedList_sharedPointer<T>::~LinkedList_sharedPointer()
 {
     deleteList();
 }
 
 template <typename T>
-int LinkedList<T>::size()
+int LinkedList_sharedPointer<T>::size()
 {
     int count = 0;
     std::shared_ptr<Node<T>> temp = head;
@@ -38,7 +38,7 @@ int LinkedList<T>::size()
     return count;
 }
 template <typename T>
-void LinkedList<T>::insertToN(int n, T value)
+void LinkedList_sharedPointer<T>::insertToN(int n, T value)
 {
     std::shared_ptr<Node<T>> newNode = Node<T>::create(value);
     if (n == 0)
@@ -63,13 +63,13 @@ void LinkedList<T>::insertToN(int n, T value)
 }
 
 template <typename T>
-void LinkedList<T>::insertToStart(T value)
+void LinkedList_sharedPointer<T>::insertToStart(T value)
 {
     insertToN(0,value);
 }
 
 template <typename T>
-void LinkedList<T>::insertToEnd(T value)
+void LinkedList_sharedPointer<T>::insertToEnd(T value)
 {
     std::shared_ptr<Node<T>> newNode = new Node<T>(value);
     if (head == nullptr)
@@ -87,7 +87,7 @@ void LinkedList<T>::insertToEnd(T value)
     }
 }
 template <typename T>
-void LinkedList<T>::deleteN(int n)
+void LinkedList_sharedPointer<T>::deleteN(int n)
 {
     if (head == nullptr) return;
     std::shared_ptr<Node<T>> temp = head;
@@ -107,7 +107,7 @@ void LinkedList<T>::deleteN(int n)
     temp->next = nextNode;
 }
 template <typename T>
-void LinkedList<T>::deleteEnd()
+void LinkedList_sharedPointer<T>::deleteEnd()
 {
     if (head == nullptr) return;
     if (head->next == nullptr)
@@ -125,7 +125,7 @@ void LinkedList<T>::deleteEnd()
     temp->next = nullptr;
 }
 template <typename T>
-void LinkedList<T>::deleteList()
+void LinkedList_sharedPointer<T>::deleteList()
 {
     std::shared_ptr<Node<T>> temp = head;
     while (temp != nullptr)
@@ -137,7 +137,7 @@ void LinkedList<T>::deleteList()
     head = nullptr;
 }
 template <typename T>
-void LinkedList<T>::display(){
+void LinkedList_sharedPointer<T>::display(){
     std::shared_ptr<Node<T>> temp = head;
     while (temp != nullptr)
     {
@@ -152,4 +152,5 @@ void LinkedList<T>::display(){
 // `LinkedList<std::__cxx11::basic_string<char, std::char_traits<char>,
 // std::allocator<char> > >::~LinkedList()'
 // why without this line, it doesn't link compiled file?
-template class LinkedList<std::string>;
+template class LinkedList_sharedPointer<std::string>;
+template class LinkedList_sharedPointer<int>;

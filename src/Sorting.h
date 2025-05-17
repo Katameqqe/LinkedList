@@ -1,7 +1,7 @@
 #ifndef SORTING_H
 #define SORTING_H
 
-#include "LinkedList.h"
+#include "LinkedList_RawPointer.h"
 
 class Sorting
 {

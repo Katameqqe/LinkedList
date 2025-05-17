@@ -9,9 +9,9 @@ BIN_DIR = bin
 
 TARGET = $(BIN_DIR)/app
 
-IGNORE = LL_sharedPtr.cpp
+IGNORE = LinkedList_withObject.cpp
 
-SRCS = $(filter-out $(SRC_DIR)/LinkedList_withObject.cpp, $(filter-out $(SRC_DIR)/$(IGNORE), $(wildcard $(SRC_DIR)/*.cpp)))
+SRCS = $(filter-out $(SRC_DIR)/$(IGNORE), $(wildcard $(SRC_DIR)/*.cpp))
 
 OBJS = $(patsubst $(SRC_DIR)/%.cpp, $(OBJ_DIR)/%.o, $(SRCS))
 
