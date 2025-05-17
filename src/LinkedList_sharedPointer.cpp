@@ -126,12 +126,12 @@ void LinkedList_sharedPointer<T>::deleteN(int n)
     {
         return;
     }
-    PtrT temp = head;
     if (n == 0)
     {
-        head = temp->getNext();
+        head = head->getNext();
         return;
     }
+    PtrT temp = head;
     for (int i = 0; i < n - 1 && temp != nullptr; i++)
     {
         temp = temp->getNext();
@@ -167,12 +167,6 @@ void LinkedList_sharedPointer<T>::deleteEnd()
 template <typename T>
 void LinkedList_sharedPointer<T>::deleteList()
 {
-    PtrT temp = head;
-    while (temp != nullptr)
-    {
-        PtrT next = temp->getNext();
-        temp = next;
-    }
     head = nullptr;
 }
 
