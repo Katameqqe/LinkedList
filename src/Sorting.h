@@ -2,11 +2,13 @@
 #define SORTING_H
 
 #include "LinkedList_RawPointer.h"
+#include "LinkedList_sharedPointer.h"
 
 class Sorting
 {
 public:
     static LinkedList_RawPointer<int> inserSort(LinkedList_RawPointer<int> list);
+    static LinkedList_sharedPointer<int> inserSort(LinkedList_sharedPointer<int> list);
 
 private:
     //static Node<int>* search(int value, Node<int>* list);
