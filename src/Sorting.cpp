@@ -2,42 +2,44 @@
 #include <stdio.h>
 
 // TODO: implement search function. Linear search.
-
-Node<int>* Sorting::search(int value, Node<int>* list)
+/*
+Node<int>* Sorting::search(int value, Node<int>* head)
 {
-    Node<int> *current = list;
-    while (current != nullptr)
-    {
-        if(current->getData() < value)
-        {
-            return current;
-        }
-        current = current->getNext();
-    }
-    return list;
-}
 
+}
+*/
 LinkedList_RawPointer<int> Sorting::inserSort(LinkedList_RawPointer<int> list)
 {
-    LinkedList_RawPointer<int> sortedList = list.copyList();
-    Node<int> *current = sortedList.getHead();
-    Node<int> *nextNode = nullptr;
-    Node<int> *prevNode = current;
-    Node<int> *temp;
-
-    while (current != nullptr)
+    LinkedList_RawPointer<int> unsortedList = list.copyList();
+    LinkedList_RawPointer<int> sortedList;
+    if (unsortedList.getHead() == nullptr || unsortedList.getHead()->getNext() == nullptr)
     {
-        nextNode = current->getNext();
-        temp = search(current->getData(), sortedList.getHead());
-        printf("%d ", temp->getData());
-        if (temp != nullptr)
+        return unsortedList;
+    }
+    while (unsortedList.getHead() != nullptr)
+    {
+        Node<int> *current = unsortedList.getHead();
+        unsortedList.setHead(unsortedList.getHead()->getNext());
+        if (sortedList.getHead() == nullptr || current->getData() < sortedList.getHead()->getData())
         {
-            prevNode->setNext(nextNode);
-            temp->setNext(current);
-            current->setNext(temp->getNext());
+            current->setNext(sortedList.getHead());
+            sortedList.setHead(current);
         }
-        prevNode = prevNode->getNext();
-        current = nextNode;
+        else
+        {
+            Node<int> *prev = sortedList.getHead();
+            while(prev != nullptr)
+            {
+                if (prev->getNext() == nullptr || 
+                    current->getData() < prev->getNext()->getData())
+                {
+                    current->setNext(prev->getNext());
+                    prev->setNext(current);
+                    break;
+                }
+                prev = prev->getNext();
+            }
+        }
     }
     return sortedList;
 }

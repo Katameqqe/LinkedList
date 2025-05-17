@@ -9,7 +9,7 @@ public:
     static LinkedList_RawPointer<int> inserSort(LinkedList_RawPointer<int> list);
 
 private:
-    static Node<int>* search(int value, Node<int>* list);
+    //static Node<int>* search(int value, Node<int>* list);
 
 };
 
