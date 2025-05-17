@@ -1,24 +1,56 @@
 #include "LinkedList_sharedPointer.h"
 
 template <typename T>
-Node<T>::PtrT Node<T>::create(T data)
+typename NodeShared<T>::PtrT NodeShared<T>::create(T data)
 {
-    return std::shared_ptr<Node<T>>(new Node<T>(value));
+    return std::make_shared<NodeShared<T>>(data);
 }
 
 template <typename T>
-Node<T>::Node(T data) :
+NodeShared<T>::NodeShared(T data) :
     data(data)
     , next (nullptr)
 {
 }
 
 template <typename T>
-LinkedList_sharedPointer<T>::LinkedList_sharedPointer():
-    head(nullptr)
+T NodeShared<T>::getData()
 {
+    return this->data;
 }
 
+template <typename T>
+void NodeShared<T>::setData(T value)
+{
+    data = value;
+}
+
+template <typename T>
+typename NodeShared<T>::PtrT NodeShared<T>::getNext()
+{
+    return this->next;
+}
+
+template <typename T>
+void NodeShared<T>::setNext(typename NodeShared<T>::PtrT next)
+{
+    this->next = next;
+}
+
+template <typename T>
+LinkedList_sharedPointer<T>::LinkedList_sharedPointer()
+{
+    head = nullptr;
+}
+
+template <typename T>
+LinkedList_sharedPointer<T>::LinkedList_sharedPointer(const LinkedList_sharedPointer<T>& other) : head(nullptr) {
+    PtrT temp = other.getHead();
+    while (temp != nullptr) {
+        insertToEnd(temp->getData());
+        temp = temp->getNext();
+    }
+}
 template <typename T>
 LinkedList_sharedPointer<T>::~LinkedList_sharedPointer()
 {
@@ -29,35 +61,35 @@ template <typename T>
 int LinkedList_sharedPointer<T>::size()
 {
     int count = 0;
-    std::shared_ptr<Node<T>> temp = head;
+    PtrT temp = head;
     while (temp != nullptr)
     {
         count++;
-        temp = temp->next;
+        temp = temp->getNext();
     }
     return count;
 }
+
 template <typename T>
 void LinkedList_sharedPointer<T>::insertToN(int n, T value)
 {
-    std::shared_ptr<Node<T>> newNode = Node<T>::create(value);
+    PtrT newNode = NodeShared<T>::create(value);
     if (n == 0)
     {
-        newNode->next = head;
+        newNode->setNext(head);
         head = newNode;
-    } 
+    }
     else
     {
-        std::shared_ptr<Node<T>> temp = head;
+        PtrT temp = head;
         for (int i = 0; i < n - 1 && temp != nullptr; i++)
         {
-            temp = temp->next;
+            temp = temp->getNext();
         }
-
         if (temp != nullptr)
         {
-            newNode->next = temp->next;
-            temp->next = newNode;
+            newNode->setNext(temp->getNext());
+            temp->setNext(newNode);
         }
     }
 }
@@ -71,86 +103,118 @@ void LinkedList_sharedPointer<T>::insertToStart(T value)
 template <typename T>
 void LinkedList_sharedPointer<T>::insertToEnd(T value)
 {
-    std::shared_ptr<Node<T>> newNode = new Node<T>(value);
+    PtrT newNode = NodeShared<T>::create(value);
     if (head == nullptr)
     {
         head = newNode;
     }
     else
     {
-        std::shared_ptr<Node<T>> temp = head;
-        while(temp->next != nullptr)
+        PtrT temp = head;
+        while(temp->getNext() != nullptr)
         {
-            temp = temp->next;
+            temp = temp->getNext();
         }
-        temp->next = newNode;
+        temp->setNext(newNode);
     }
 }
+
 template <typename T>
 void LinkedList_sharedPointer<T>::deleteN(int n)
 {
-    if (head == nullptr) return;
-    std::shared_ptr<Node<T>> temp = head;
+    if (head == nullptr)
+    {
+        return;
+    }
+    PtrT temp = head;
     if (n == 0)
     {
-        head = temp->next;
-        delete temp;
+        head = temp->getNext();
         return;
     }
     for (int i = 0; i < n - 1 && temp != nullptr; i++)
     {
-        temp = temp->next;
+        temp = temp->getNext();
     }
-    if (temp == nullptr || temp->next == nullptr) return;
-    std::shared_ptr<Node<T>> nextNode = temp->next->next;
-    delete temp->next;
-    temp->next = nextNode;
+    if (temp == nullptr || temp->getNext() == nullptr)
+    {
+        return;
+    }
+    PtrT nextNode = temp->getNext()->getNext();
+    temp->setNext(nextNode);
 }
+
 template <typename T>
 void LinkedList_sharedPointer<T>::deleteEnd()
 {
-    if (head == nullptr) return;
-    if (head->next == nullptr)
+    if (head == nullptr) 
     {
-        delete head;
+        return;
+    }
+    if (head->getNext() == nullptr)
+    {
         head = nullptr;
         return;
     }
-    std::shared_ptr<Node<T>> temp = head;
-    while (temp->next->next != nullptr)
+    PtrT temp = head;
+    while (temp->getNext()->getNext() != nullptr)
     {
-        temp = temp->next;
+        temp = temp->getNext();
     }
-    delete temp->next;
-    temp->next = nullptr;
+    temp->setNext(nullptr);
 }
+
 template <typename T>
 void LinkedList_sharedPointer<T>::deleteList()
 {
-    std::shared_ptr<Node<T>> temp = head;
+    PtrT temp = head;
     while (temp != nullptr)
     {
-        std::shared_ptr<Node<T>> next = temp->next;
-        delete temp;
+        PtrT next = temp->getNext();
         temp = next;
     }
     head = nullptr;
 }
+
 template <typename T>
 void LinkedList_sharedPointer<T>::display(){
-    std::shared_ptr<Node<T>> temp = head;
+    PtrT temp = head;
+    
     while (temp != nullptr)
     {
-        std::cout << temp->data << " -> ";
-        temp = temp->next;
+        std::cout << temp->getData() << " -> ";
+        temp = temp->getNext();
     }
     std::cout << "nullptr" << std::endl;
 }
 
-// /usr/bin/ld: ./obj/main.o: in function `main.cold':
-// main.cpp:(.text.unlikely+0xc): undefined reference to 
-// `LinkedList<std::__cxx11::basic_string<char, std::char_traits<char>,
-// std::allocator<char> > >::~LinkedList()'
-// why without this line, it doesn't link compiled file?
+template <typename T>
+typename NodeShared<T>::PtrT LinkedList_sharedPointer<T>::getHead() const
+{
+    return head;
+}
+
+template <typename T>
+void LinkedList_sharedPointer<T>::setHead(typename NodeShared<T>::PtrT phead)
+{
+    head = phead;
+}
+
+template <typename T>
+const LinkedList_sharedPointer<T> LinkedList_sharedPointer<T>::copyList() {
+    LinkedList_sharedPointer<T> newList;
+    PtrT temp = head;
+
+    while (temp != nullptr) {
+        newList.insertToEnd(temp->getData());
+        temp = temp->getNext();
+    }
+
+    return newList;
+}
+
+template class NodeShared<int>;
+template class NodeShared<std::string>;
+
 template class LinkedList_sharedPointer<std::string>;
 template class LinkedList_sharedPointer<int>;
