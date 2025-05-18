@@ -7,8 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DA2D9C742DD74468008AC896 /* Sorting.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA2D9C732DD7443E008AC896 /* Sorting.cpp */; };
 		DA3FA2202DD370C90081E773 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA3FA21E2DD370B90081E773 /* main.cpp */; };
-		DA3FA2212DD371070081E773 /* LL.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA3FA21B2DD370B90081E773 /* LL.cpp */; };
+		DA3FA2212DD371070081E773 /* LinkedList.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA3FA21B2DD370B90081E773 /* LinkedList.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -24,9 +25,16 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		DA2D9C6D2DD74412008AC896 /* Makefile */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
+		DA2D9C6E2DD74412008AC896 /* TASK.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = TASK.txt; sourceTree = "<group>"; };
+		DA2D9C6F2DD74412008AC896 /* TODOS.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = TODOS.txt; sourceTree = "<group>"; };
+		DA2D9C702DD7443E008AC896 /* LinkedList_withObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LinkedList_withObject.h; sourceTree = "<group>"; };
+		DA2D9C712DD7443E008AC896 /* LinkedList_withObject.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = LinkedList_withObject.cpp; sourceTree = "<group>"; };
+		DA2D9C722DD7443E008AC896 /* Sorting.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Sorting.h; sourceTree = "<group>"; };
+		DA2D9C732DD7443E008AC896 /* Sorting.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Sorting.cpp; sourceTree = "<group>"; };
 		DA3FA2122DD370A00081E773 /* LinkedList_rawPointer */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = LinkedList_rawPointer; sourceTree = BUILT_PRODUCTS_DIR; };
-		DA3FA21A2DD370B90081E773 /* LL.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LL.h; sourceTree = "<group>"; };
-		DA3FA21B2DD370B90081E773 /* LL.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = LL.cpp; sourceTree = "<group>"; };
+		DA3FA21A2DD370B90081E773 /* LinkedList.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LinkedList.h; sourceTree = "<group>"; };
+		DA3FA21B2DD370B90081E773 /* LinkedList.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = LinkedList.cpp; sourceTree = "<group>"; };
 		DA3FA21C2DD370B90081E773 /* LL_sharedPtr.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LL_sharedPtr.h; sourceTree = "<group>"; };
 		DA3FA21D2DD370B90081E773 /* LL_sharedPtr.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = LL_sharedPtr.cpp; sourceTree = "<group>"; };
 		DA3FA21E2DD370B90081E773 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
@@ -46,6 +54,9 @@
 		DA3FA2072DD370610081E773 = {
 			isa = PBXGroup;
 			children = (
+				DA2D9C6D2DD74412008AC896 /* Makefile */,
+				DA2D9C6E2DD74412008AC896 /* TASK.txt */,
+				DA2D9C6F2DD74412008AC896 /* TODOS.txt */,
 				DA3FA21F2DD370B90081E773 /* src */,
 				DA3FA2132DD370A00081E773 /* Products */,
 			);
@@ -62,8 +73,12 @@
 		DA3FA21F2DD370B90081E773 /* src */ = {
 			isa = PBXGroup;
 			children = (
-				DA3FA21A2DD370B90081E773 /* LL.h */,
-				DA3FA21B2DD370B90081E773 /* LL.cpp */,
+				DA2D9C702DD7443E008AC896 /* LinkedList_withObject.h */,
+				DA2D9C712DD7443E008AC896 /* LinkedList_withObject.cpp */,
+				DA2D9C722DD7443E008AC896 /* Sorting.h */,
+				DA2D9C732DD7443E008AC896 /* Sorting.cpp */,
+				DA3FA21A2DD370B90081E773 /* LinkedList.h */,
+				DA3FA21B2DD370B90081E773 /* LinkedList.cpp */,
 				DA3FA21C2DD370B90081E773 /* LL_sharedPtr.h */,
 				DA3FA21D2DD370B90081E773 /* LL_sharedPtr.cpp */,
 				DA3FA21E2DD370B90081E773 /* main.cpp */,
@@ -131,8 +146,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DA2D9C742DD74468008AC896 /* Sorting.cpp in Sources */,
 				DA3FA2202DD370C90081E773 /* main.cpp in Sources */,
-				DA3FA2212DD371070081E773 /* LL.cpp in Sources */,
+				DA3FA2212DD371070081E773 /* LinkedList.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
