@@ -16,7 +16,7 @@ int main ()
     slist.insertToStart(5);
     slist.display();
 
-    LinkedList_sharedPointer<int> slist2 = Sorting::inserSort(slist);
+    LinkedList_sharedPointer<int> slist2 = Sorting::inserionSort(slist);
     slist2.display();
 
     std::cout << "------------------------" << std::endl;
