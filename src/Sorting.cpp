@@ -44,7 +44,7 @@ LinkedList_RawPointer<int> Sorting::inserSort(LinkedList_RawPointer<int> list)
     return sortedList;
 }
 
-LinkedList_sharedPointer<int> Sorting::inserSort(LinkedList_sharedPointer<int> list)
+LinkedList_sharedPointer<int> Sorting::inserionSort(LinkedList_sharedPointer<int> list)
 {
     LinkedList_sharedPointer<int> unsortedList = list.copyList();
     LinkedList_sharedPointer<int> sortedList;
