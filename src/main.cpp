@@ -4,6 +4,10 @@
 #include <string>
 #include <stdio.h>
 
+#include "LinkedListNodeRawPointer.hpp"
+#include "LinkedList.hpp"
+#include "InsertionSorter.hpp"
+
 int main ()
 {
     LinkedList_RawPointer<int> list;
@@ -31,6 +35,28 @@ int main ()
     list.display();
     LinkedList_RawPointer<int> rlist = Sorting::inserSort(list);
     rlist.display();
+
+    std::cout << "------------------------" << std::endl;
+
+    LinkedListNodeRawPointer<int> *headNode = new LinkedListNodeRawPointer<int>(1);
+
+    headNode = LinkedList::insertToStart(headNode, new LinkedListNodeRawPointer<int>(2));
+    headNode = LinkedList::insertToStart(headNode, new LinkedListNodeRawPointer<int>(3));
+    headNode = LinkedList::insertToStart(headNode, new LinkedListNodeRawPointer<int>(4));
+    headNode = LinkedList::insertToStart(headNode, new LinkedListNodeRawPointer<int>(5));
+    headNode = LinkedList::insertToStart(headNode, new LinkedListNodeRawPointer<int>(5));
+    headNode = LinkedList::insertToStart(headNode, new LinkedListNodeRawPointer<int>(4));
+    headNode = LinkedList::insertToStart(headNode, new LinkedListNodeRawPointer<int>(3));
+
+    std::cout << headNode->toString();
+
+    LinkedListNodeRawPointer<int> *sortedHead = InsertionSorter::inserionSort(headNode);
+
+    std::cout << sortedHead->toString();
+
+    delete headNode;
+
+    std::cout << "------------------------" << std::endl;
 
     // BinarySorting::....
     return 0;

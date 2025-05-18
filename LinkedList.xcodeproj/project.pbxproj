@@ -11,6 +11,8 @@
 		DA2D9C7F2DDA0652008AC896 /* LinkedList_sharedPointer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA2D9C7E2DDA0652008AC896 /* LinkedList_sharedPointer.cpp */; };
 		DA2D9C802DDA0652008AC896 /* LinkedList_RawPointer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA2D9C7C2DDA0652008AC896 /* LinkedList_RawPointer.cpp */; };
 		DA2D9C852DDA076A008AC896 /* LinkedListNodeRawPointer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA2D9C842DDA076A008AC896 /* LinkedListNodeRawPointer.cpp */; };
+		DA2D9C882DDA089E008AC896 /* LinkedList.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA2D9C872DDA089E008AC896 /* LinkedList.cpp */; };
+		DA2D9C8B2DDA0D59008AC896 /* InsertionSorter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA2D9C8A2DDA0D59008AC896 /* InsertionSorter.cpp */; };
 		DA3FA2202DD370C90081E773 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA3FA21E2DD370B90081E773 /* main.cpp */; };
 /* End PBXBuildFile section */
 
@@ -40,6 +42,10 @@
 		DA2D9C7E2DDA0652008AC896 /* LinkedList_sharedPointer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = LinkedList_sharedPointer.cpp; sourceTree = "<group>"; };
 		DA2D9C812DDA06FF008AC896 /* LinkedListNodeRawPointer.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = LinkedListNodeRawPointer.hpp; sourceTree = "<group>"; };
 		DA2D9C842DDA076A008AC896 /* LinkedListNodeRawPointer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = LinkedListNodeRawPointer.cpp; sourceTree = "<group>"; };
+		DA2D9C862DDA089E008AC896 /* LinkedList.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = LinkedList.hpp; sourceTree = "<group>"; };
+		DA2D9C872DDA089E008AC896 /* LinkedList.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = LinkedList.cpp; sourceTree = "<group>"; };
+		DA2D9C892DDA0D59008AC896 /* InsertionSorter.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = InsertionSorter.hpp; sourceTree = "<group>"; };
+		DA2D9C8A2DDA0D59008AC896 /* InsertionSorter.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = InsertionSorter.cpp; sourceTree = "<group>"; };
 		DA3FA2122DD370A00081E773 /* LinkedList_rawPointer */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = LinkedList_rawPointer; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA3FA21E2DD370B90081E773 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -88,6 +94,10 @@
 				DA3FA21E2DD370B90081E773 /* main.cpp */,
 				DA2D9C722DD7443E008AC896 /* Sorting.h */,
 				DA2D9C732DD7443E008AC896 /* Sorting.cpp */,
+				DA2D9C862DDA089E008AC896 /* LinkedList.hpp */,
+				DA2D9C872DDA089E008AC896 /* LinkedList.cpp */,
+				DA2D9C892DDA0D59008AC896 /* InsertionSorter.hpp */,
+				DA2D9C8A2DDA0D59008AC896 /* InsertionSorter.cpp */,
 			);
 			path = src;
 			sourceTree = "<group>";
@@ -155,7 +165,9 @@
 				DA2D9C7F2DDA0652008AC896 /* LinkedList_sharedPointer.cpp in Sources */,
 				DA2D9C802DDA0652008AC896 /* LinkedList_RawPointer.cpp in Sources */,
 				DA2D9C742DD74468008AC896 /* Sorting.cpp in Sources */,
+				DA2D9C8B2DDA0D59008AC896 /* InsertionSorter.cpp in Sources */,
 				DA3FA2202DD370C90081E773 /* main.cpp in Sources */,
+				DA2D9C882DDA089E008AC896 /* LinkedList.cpp in Sources */,
 				DA2D9C852DDA076A008AC896 /* LinkedListNodeRawPointer.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
